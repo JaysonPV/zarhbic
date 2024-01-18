@@ -5,13 +5,18 @@ class RPNCalculator
 {
     static void Main()
     {
-        string expression = "5 3 + 8 * 0 /";
+        string expression = "";
         double result = EvaluateRPN(expression);
         Console.WriteLine($"Le résultat de l'expression RPN est : {result}");
     }
 
     static double EvaluateRPN(string expression)
     {
+        if (expression.Count() == 0)
+        {
+            throw new ArgumentNullException(nameof(expression), "L'expression ne peut pas être nulle.");
+        }
+
         Stack<double> stack = new Stack<double>();
         string[] tokens = expression.Split(' ');
 
